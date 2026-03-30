@@ -1,0 +1,662 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio d'Alex Dupont — Développeur Web Junior">
+<title>DAGOU — Développeur Web</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+```
+Puis dans l'admin, mets comme icône :
+```
+fa-brands fa-tiktok
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f3ee;
+    --bg2: #ede9e1;
+    --bg3: #e4dfd5;
+    --text: #1a1814;
+    --muted: #6b6659;
+    --accent: #c8611a;
+    --accent2: #2a5f8f;
+    --border: rgba(26,24,20,0.1);
+    --border-hover: rgba(26,24,20,0.2);
+    --card: #ffffff;
+    --shadow: 0 2px 20px rgba(26,24,20,0.08);
+    --shadow-hover: 0 8px 40px rgba(26,24,20,0.14);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 56px;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--text); text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color .2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+    height: 1px; background: var(--accent);
+    transform: scaleX(0); transition: transform .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; background: var(--text); color: var(--bg);
+    border-radius: 100px; font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: all .2s;
+  }
+  .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 140px 56px 80px;
+    position: relative;
+  }
+  .hero-bg {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 45%; background: var(--bg2);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--accent);
+    background: rgba(200,97,26,0.08);
+    border: 1px solid rgba(200,97,26,0.2);
+    padding: 6px 14px; border-radius: 4px;
+    margin-bottom: 32px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-tag span {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 6.5vw, 80px);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em; margin-bottom: 28px;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-desc {
+    font-size: 18px; color: var(--muted);
+    max-width: 480px; margin-bottom: 44px;
+    font-weight: 300; line-height: 1.7;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 32px; border-radius: 100px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; transition: all .25s; cursor: pointer; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,97,26,0.3); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1.5px solid var(--border-hover);
+  }
+  .btn-outline:hover { border-color: var(--text); background: var(--bg2); }
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 56px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--muted);
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollpulse { 0%,100%{width:40px} 50%{width:60px} }
+
+  /* ---- SECTIONS COMMUNES ---- */
+  .section-wrap { padding: 100px 56px; max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 56px; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-num::before {
+    content: ''; width: 32px; height: 1px; background: var(--muted);
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* ---- À PROPOS ---- */
+  .about-section { background: var(--bg2); }
+  .about-inner { padding: 100px 56px; max-width: 1200px; margin: 0 auto; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+  .about-photo {
+    aspect-ratio: 3/4; background: var(--bg3);
+    border-radius: 4px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 96px; position: relative;
+    box-shadow: var(--shadow);
+  }
+  .about-photo::after {
+    content: ''; position: absolute;
+    top: 16px; left: 16px; right: -16px; bottom: -16px;
+    border: 2px solid var(--accent); border-radius: 4px; z-index: -1;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 20px; font-size: 16px; }
+  .about-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 40px; padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800; color: var(--accent);
+    letter-spacing: -0.03em;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* ---- COMPÉTENCES ---- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+    transition: all .25s;
+    box-shadow: var(--shadow);
+  }
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+  }
+  .skill-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; text-align: center; }
+  .skill-icon { font-size: 24px; }
+  .skill-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; }
+  .skill-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .skill-bar { height: 4px; background: var(--bg3); border-radius: 99px; overflow: hidden; }
+  .skill-fill {
+    height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 1.4s cubic-bezier(.4,0,.2,1);
+  }
+  .skill-pct { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; margin-top: 6px; }
+  .skills-category { margin-bottom: 48px; }
+  .cat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ---- PROJETS ---- */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: all .3s; box-shadow: var(--shadow);
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+  .project-thumb {
+    height: 200px; background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 56px; position: relative; overflow: hidden;
+  }
+  .project-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: absolute; inset: 0;
+  }
+  .project-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    padding: 4px 10px; border-radius: 4px;
+    background: var(--bg2); color: var(--muted);
+    border: 1px solid var(--border);
+    letter-spacing: 0.05em;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    margin-bottom: 10px; letter-spacing: -0.02em;
+  }
+  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 24px; }
+  .project-links { display: flex; gap: 10px; }
+  .project-link {
+    font-size: 13px; font-weight: 500;
+    color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 100px;
+    border: 1.5px solid var(--border-hover);
+    transition: all .2s;
+  }
+  .project-link:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .no-projects {
+    grid-column: 1/-1; text-align: center;
+    padding: 60px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-section { background: var(--text); color: var(--bg); }
+  .contact-inner { padding: 100px 56px; max-width: 1200px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+  .contact-left h2 { color: var(--bg); font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.03em; }
+  .contact-left p { color: rgba(245,243,238,0.6); margin: 20px 0 36px; font-size: 16px; font-weight: 300; }
+  .contact-infos { display: flex; flex-direction: column; gap: 16px; }
+  .contact-info-item {
+    display: flex; align-items: center; gap: 14px;
+    color: rgba(245,243,238,0.8); font-size: 14px;
+  }
+  .contact-info-item a { color: inherit; text-decoration: none; }
+  .contact-info-item a:hover { color: var(--bg); }
+  .info-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: rgba(245,243,238,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  /* Formulaire */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 13px; color: rgba(245,243,238,0.6); font-weight: 500; }
+  .form-input {
+    width: 100%; padding: 14px 18px;
+    background: rgba(245,243,238,0.07);
+    border: 1px solid rgba(245,243,238,0.15);
+    border-radius: 10px;
+    color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 15px;
+    transition: all .2s; outline: none; resize: vertical;
+  }
+  .form-input::placeholder { color: rgba(245,243,238,0.3); }
+  .form-input:focus { border-color: var(--accent); background: rgba(245,243,238,0.1); }
+  .form-errors { font-size: 12px; color: #ff8585; margin-top: 4px; }
+  .btn-submit {
+    padding: 16px 36px; background: var(--accent); color: #fff;
+    border: none; border-radius: 100px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    transition: all .25s; align-self: flex-start;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-submit:hover { background: #d96b20; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,97,26,0.4); }
+
+  /* Messages Django */
+  .django-messages { padding: 0 56px; max-width: 1200px; margin: 0 auto 0; }
+  .alert {
+    padding: 14px 20px; border-radius: 10px; margin-bottom: 12px;
+    font-size: 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .alert-success { background: rgba(42,95,143,0.1); border: 1px solid rgba(42,95,143,0.25); color: var(--accent2); }
+  .alert-error { background: rgba(200,97,26,0.1); border: 1px solid rgba(200,97,26,0.25); color: var(--accent); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    text-align: center; padding: 28px 56px;
+    background: var(--text); border-top: 1px solid rgba(245,243,238,0.08);
+    color: rgba(245,243,238,0.3); font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero, .section-wrap, .about-inner, .contact-inner { padding: 80px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-photo { max-width: 240px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-bg { display: none; }
+    .hero-scroll { display: none; }
+    .django-messages { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">DAGOU ABE JEAN CHRIST EMMANUEL</a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Me contacter →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span></span> Disponible pour des projets numériques et des collaborations.</div>
+    <h1>DAGOU ABE,<br><em>développeur</em><br>FullStack Junior.</h1>
+    <p class="hero-desc">Je crée des interfaces modernes et des applications robustes. Passionné par le code propre et l'expérience utilisateur.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Voir mes projets →</a>
+      <a href="/media/ABE JEAN CHRIST EMMANUEL DAGOU CV DEVELOPPEUR WEB.pdf" download="CV_DAGOU_ABE_JEAN_CHRIST_EMMANUEL.pdf" class="btn btn-outline">
+  Télécharger le CV ↓
+</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Défiler
+  </div>
+</section>
+
+<!-- MESSAGES DJANGO -->
+{% if messages %}
+<div class="django-messages" style="padding-top:24px;">
+  {% for message in messages %}
+  <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-error{% endif %}">
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- À PROPOS -->
+<div class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="about-photo">
+  <img src="/media/portfolio.jpg" alt="Alex Dupont" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+</div>
+      <div class="about-text">
+        <div class="section-num">01 — À propos</div>
+        <h2 style="margin-bottom:28px;">Qui suis-je ?</h2>
+
+<p>
+Je suis <strong>ABE Jean Christ Emmanuel DAGOU</strong>, étudiant en Technologies du Web et Images Numériques (TWIN) à l’ESATIC, basé à Abidjan. Passionné par le numérique, je conçois des applications web et mobiles ainsi que des expériences digitales modernes.
+</p>
+
+<p>
+Curieux avec une grande capacité d'adaptation, j’aime apprendre constamment et relever de nouveaux défis. Je m’intéresse particulièrement à la création d’interfaces modernes et à l’expérience utilisateur afin de proposer des solutions simples, efficaces et agréables à utiliser.
+</p>
+
+<p>
+En parallèle du développement, je réalise également des <strong>visuels graphiques</strong> et je partage mes créations sur ma <strong>page TikTok</strong>, où je publie mes différents visuels.
+</p>
+
+<p>
+Actuellement à la recherche d’opportunités de stage, de collaboration ou de projets afin de continuer à progresser et contribuer à des projets numériques innovants.
+</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Ans d'expérience</div>
+          </div>
+          <div>
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Projets réalisés</div>
+          </div>
+          <div>
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPÉTENCES -->
+<!-- COMPÉTENCES -->
+<div id="skills">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">02 — Compétences</div>
+      <h2>Compétences techniques</h2>
+    </div>
+
+    {% if competences_frontend %}
+    <div class="skills-category">
+      <div class="cat-label">Frontend</div>
+      <div class="skills-grid">
+        {% for c in competences_frontend %}
+        <div class="skill-card">
+          <div class="skill-header">
+            <i class="{{ c.icone }}" style="font-size:28px;"></i>
+            <span class="skill-name">{{ c.nom }}</span>
+          </div>
+          {% if c.description %}<div class="skill-desc">{{ c.description }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if competences_backend %}
+    <div class="skills-category">
+      <div class="cat-label">Backend</div>
+      <div class="skills-grid">
+        {% for c in competences_backend %}
+        <div class="skill-card">
+          <div class="skill-header">
+            <i class="{{ c.icone }}" style="font-size:28px;"></i>
+            <span class="skill-name">{{ c.nom }}</span>
+          </div>
+          {% if c.description %}<div class="skill-desc">{{ c.description }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if competences_outils %}
+    <div class="skills-category">
+      <div class="cat-label">Outils</div>
+      <div class="skills-grid">
+        {% for c in competences_outils %}
+        <div class="skill-card">
+          <div class="skill-header">
+            <i class="{{ c.icone }}" style="font-size:28px;"></i>
+            <span class="skill-name">{{ c.nom }}</span>
+          </div>
+          {% if c.description %}<div class="skill-desc">{{ c.description }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if competences_autres %}
+<div class="skills-category">
+  <div class="cat-label">Autres</div>
+  <div class="skills-grid">
+    {% for c in competences_autres %}
+    <div class="skill-card">
+      <div class="skill-header">
+        <i class="{{ c.icone }}" style="font-size:28px;"></i>
+        <span class="skill-name">{{ c.nom }}</span>
+      </div>
+      {% if c.description %}<div class="skill-desc">{{ c.description }}</div>{% endif %}
+     
+      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+    {% if not competences_frontend and not competences_backend and not competences_outils %}
+    <p style="color:var(--muted);font-style:italic;">Aucune compétence ajoutée. Rendez-vous sur <a href="/admin" style="color:var(--accent)">/admin</a> pour en ajouter.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- PROJETS -->
+<div id="projects" style="background:var(--bg2);">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-num">03 — Projets</div>
+      <h2>Mes réalisations</h2>
+    </div>
+    <div class="projects-grid">
+      {% for projet in projets %}
+      <div class="project-card">
+        <div class="project-thumb">
+          {% if projet.image %}
+            <img src="{{ projet.image.url }}" alt="{{ projet.titre }}">
+          {% else %}
+            {{ projet.emoji }}
+          {% endif %}
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            {% for tech in projet.get_technologies_list %}
+            <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-title">{{ projet.titre }}</div>
+          <p class="project-desc">{{ projet.description }}</p>
+          <div class="project-links">
+            {% if projet.lien_github %}
+            <a href="{{ projet.lien_github }}" target="_blank" class="project-link">⌥ GitHub</a>
+            {% endif %}
+            {% if projet.lien_demo %}
+            <a href="{{ projet.lien_demo }}" target="_blank" class="project-link">🔗 Demo</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="no-projects">
+        Aucun projet encore. Ajoutez-en via <a href="/admin" style="color:var(--accent)">/admin</a>.
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-num" style="color:rgba(245,243,238,0.4);">04 — Contact</div>
+        <h2>Travaillons<br>ensemble.</h2>
+        <p>Disponible pour des missions freelance, un emploi ou simplement un échange autour d'un projet.</p>
+        <div class="contact-infos">
+         <div class="contact-info-item">
+  <div class="info-icon">
+    <i class="fa-solid fa-envelope"></i>
+  </div>
+  <a href="mailto:alex@example.com">jeanchrist690@gmail.com
+</a>
+</div>
+<div class="contact-info-item">
+  <div class="info-icon">
+    <i class="fa-brands fa-linkedin"></i>
+  </div>
+  <a href="https://www.linkedin.com/in/abe-jean-christ-emmanuel-dagou-10557439a/" target="_blank">linkedin.com/in/abe-jean-christ-emmanuel-dagou</a>
+</div>
+<div class="contact-info-item">
+  <div class="info-icon">
+    <i class="fa-brands fa-github"></i>
+  </div>
+  <a href="#" target="_blank">github.com/dagou690
+</a>
+</div>
+<div class="contact-info-item">
+  <div class="info-icon">
+    <i class="fa-solid fa-location-dot"></i>
+  </div>
+  <span>Abidjan, Côte d'Ivoire</span>
+</div>
+        </div>
+      </div>
+
+      <form class="contact-form" method="POST" action="#contact">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group">
+            {{ form.nom.label_tag }}
+            {{ form.nom }}
+            {% if form.nom.errors %}
+            <div class="form-errors">{{ form.nom.errors }}</div>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% if form.email.errors %}
+            <div class="form-errors">{{ form.email.errors }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          {{ form.sujet.label_tag }}
+          {{ form.sujet }}
+          {% if form.sujet.errors %}
+          <div class="form-errors">{{ form.sujet.errors }}</div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.message.label_tag }}
+          {{ form.message }}
+          {% if form.message.errors %}
+          <div class="form-errors">{{ form.message.errors }}</div>
+          {% endif %}
+        </div>
+        <button type="submit" class="btn-submit">Envoyer le message →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Conçu &amp; développé par DAGOU ABE JEAN CHRIST — {% now "Y" %} — Django
+</footer>
+
+</body>
+</html>
