@@ -20,9 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio',
-    'cloudinary',
-    'cloudinary_storage',
+    'cloudinary',           # ← remonté ici
+    'cloudinary_storage',   # ← remonté ici
+    'portfolio',            # ← portfolio en dernier
 ]
 
 MIDDLEWARE = [
